@@ -217,6 +217,7 @@ h2 {
   max-width: 15rem;
   height: auto;
   margin: 0 auto 1rem;
+  transition: width 0.3s ease;   /* smooth "growing up" effect */
 }
 
 .status-list {
@@ -275,6 +276,47 @@ h2 {
   margin: 0.75rem 0 0;
   font-weight: 600;
   color: #4c6b3f;
+}
+
+/* Small labels above the two bars */
+.bar-label {
+  margin: 0.75rem 0 0.3rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #77716a;
+}
+
+/* Growth bar: same shape as the happiness bar, amber fill */
+.growth-bar {
+  background-color: #efe9dd;
+  border-radius: 999px;
+  height: 0.9rem;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.growth-fill {
+  background-color: #e3a857;
+  height: 100%;
+  width: 25%;               /* Day 1; JS updates it */
+  transition: width 0.3s ease;
+}
+
+/* Start Over: quiet gray button, so it looks different from care buttons */
+#start-over-button {
+  display: block;
+  margin-top: 0.5rem;
+  font: inherit;
+  background-color: #ffffff;
+  color: #77716a;
+  border: 2px solid #c9c2b4;
+  border-radius: 999px;
+  padding: 0.45rem 1.1rem;
+  cursor: pointer;
+}
+
+#start-over-button:hover {
+  background-color: #f4f1ea;
 }
 
 /* --- Small screens (phones): stack everything into one column --- */

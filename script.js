@@ -2,7 +2,7 @@
 /* Three small interactive touches, written with plain vanilla JavaScript:
    1. A button that greets you with a random dog.
    2. A "fun fact" button on each breed card.
-   3. A "My Virtual Dog" section: adopt a dog and care for it. */
+   3. A "My Virtual Dog" section: adopt, feed, play, and grow a dog (saved in localStorage). */
 
 /* --- Part 1: random dog greeting --- */
 
@@ -51,6 +51,9 @@ for (var i = 0; i < factButtons.length; i++) {
 // The dog the visitor has adopted. null means "no dog yet".
 var myDog = null;
 
+// Where the dog is saved in the browser. One key = one dog at a time.
+var STORAGE_KEY = "virtualDogParkPetV1";
+
 // Where to find the picture for each breed.
 var breedImages = {
   "Beagle": "assets/beagle.svg",
@@ -71,17 +74,18 @@ var statusDay = document.getElementById("status-day");
 var statusStage = document.getElementById("status-stage");
 var statusHappiness = document.getElementById("status-happiness");
 var happinessFill = document.getElementById("happiness-fill");
+var growthFill = document.getElementById("growth-fill");
 var careMessage = document.getElementById("care-message");
 
 // Decide the growth stage from the day number.
 function getGrowthStage(day) {
-  if (day <= 2) {
+  if (day === 1) {
     return "Puppy";
   }
-  if (day <= 5) {
+  if (day <= 3) {
     return "Young Dog";
   }
-  return "Adult";
+  return "Adult Dog";
 }
 
 // Check the typed name: not empty after trimming, 20 characters at most.
@@ -125,16 +129,17 @@ function adoptDog(event) {
 
   dogStatus.hidden = false;
   renderDog();
+  saveDog();   // remember the new dog right away
 }
 
-// Feed or Play: +10 happiness (never above 100) and one more day of care.
+// Feed or Play: +10 happiness, never above 100.
+// (Days only move forward with the Next Day button.)
 function careForDog(action) {
   if (myDog === null) {
     return;   // no dog yet, nothing to care for
   }
 
   myDog.happiness = Math.min(100, myDog.happiness + 10);   // cap at 100
-  myDog.day = myDog.day + 1;                               // one more day of care
 
   if (action === "Feed") {
     careMessage.textContent = "Yum! " + myDog.name + " enjoyed the meal.";
@@ -142,7 +147,62 @@ function careForDog(action) {
     careMessage.textContent = "Wheee! " + myDog.name + " had fun playing.";
   }
 
+  saveDog();
   renderDog();
+}
+
+// Save the dog to the browser's localStorage, so it survives a refresh.
+function saveDog() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(myDog));
+}
+
+// Load the saved dog when the page opens. If nothing is saved, do nothing.
+function loadDog() {
+  var savedText = localStorage.getItem(STORAGE_KEY);
+
+  if (savedText === null) {
+    return;   // no saved dog - stay on the adoption form
+  }
+
+  try {
+    myDog = JSON.parse(savedText);
+    dogStatus.hidden = false;
+    renderDog();
+  } catch (error) {
+    // The saved data was broken - remove it and start fresh.
+    localStorage.removeItem(STORAGE_KEY);
+  }
+}
+
+// Next Day: one more day of life, but the dog gets a little less happy.
+function nextDay() {
+  if (myDog === null) {
+    return;   // no dog yet
+  }
+
+  myDog.day = myDog.day + 1;
+  myDog.happiness = Math.max(0, myDog.happiness - 5);   // never below 0
+
+  careMessage.textContent = "A new day begins for " + myDog.name + "!";
+
+  saveDog();
+  renderDog();
+}
+
+// Start Over: ask first, then delete the saved dog and show the form again.
+function startOver() {
+  var sure = confirm("Start over? This will delete your saved dog.");
+
+  if (!sure) {
+    return;   // visitor cancelled - keep the dog exactly as it is
+  }
+
+  localStorage.removeItem(STORAGE_KEY);
+  myDog = null;
+  dogStatus.hidden = true;
+  nameInput.value = "";
+  nameError.hidden = true;
+  careMessage.textContent = "";
 }
 
 // Show the dog's details on the page.
@@ -156,6 +216,12 @@ function renderDog() {
 
   dogImage.src = breedImages[myDog.breed];
   dogImage.alt = "Illustration of a " + myDog.breed;
+
+  // The dog grows a little every day until it is fully grown on Day 4.
+  var growthPercent = Math.min(myDog.day, 4) * 25;   // Day 1 = 25%, Day 4+ = 100%
+  dogImage.style.width = growthPercent + "%";
+  growthFill.style.width = growthPercent + "%";
+
   happinessFill.style.width = myDog.happiness + "%";
 }
 
@@ -167,8 +233,13 @@ document.getElementById("feed-button").addEventListener("click", function () {
 document.getElementById("play-button").addEventListener("click", function () {
   careForDog("Play");
 });
+document.getElementById("next-day-button").addEventListener("click", nextDay);
+document.getElementById("start-over-button").addEventListener("click", startOver);
 
 // Hide the error message as soon as the visitor types a new name.
 nameInput.addEventListener("input", function () {
   nameError.hidden = true;
 });
+
+// Bring back the saved dog, if there is one.
+loadDog();

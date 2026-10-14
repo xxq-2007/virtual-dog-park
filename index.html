@@ -124,12 +124,20 @@
           <li>Growth stage: <span id="status-stage"></span></li>
           <li>Happiness: <span id="status-happiness"></span> / 100</li>
         </ul>
+
+        <!-- Two bars: how happy the dog is, and how much it has grown -->
+        <p class="bar-label">Happiness</p>
         <div class="happiness-bar"><div id="happiness-fill" class="happiness-fill"></div></div>
+        <p class="bar-label">Growth</p>
+        <div class="growth-bar"><div id="growth-fill" class="growth-fill"></div></div>
+
         <div class="care-buttons">
           <button id="feed-button" type="button">Feed</button>
           <button id="play-button" type="button">Play</button>
+          <button id="next-day-button" type="button">Next Day</button>
         </div>
         <p id="care-message" class="care-message" aria-live="polite"></p>
+        <button id="start-over-button" type="button">Start Over</button>
       </div>
     </section>
 
