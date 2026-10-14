@@ -1,0 +1,166 @@
+/* ===== Virtual Dog Park - stylesheet ===== */
+/* Written to be easy to read: one block per part of the page. */
+
+/* --- Page defaults: calm colors, comfortable text --- */
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  font-size: 1rem;          /* 16px base, good for reading */
+  line-height: 1.6;         /* airy line spacing */
+  color: #33323a;           /* dark gray, softer than pure black */
+  background-color: #fdfbf6;
+}
+
+/* --- Top banner --- */
+.site-header {
+  background-color: #7fb069;   /* park green */
+  color: #ffffff;
+  text-align: center;
+  padding: 2.5rem 1rem;
+}
+
+.site-header h1 {
+  margin: 0 0 0.5rem;
+  font-size: 2rem;
+}
+
+.tagline {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* --- Centered column that never gets too wide to read --- */
+.container {
+  max-width: 60rem;        /* 960px */
+  margin: 0 auto;          /* centers the column */
+  padding: 1.5rem 1rem 2.5rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* --- Welcome box --- */
+.welcome {
+  background-color: #ffffff;
+  border: 1px solid #e6e0d4;
+  border-radius: 0.75rem;
+  padding: 1.25rem 1.5rem;
+}
+
+/* --- Greeting button and message --- */
+#greet-button {
+  font: inherit;               /* same font as the rest of the page */
+  background-color: #7fb069;
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;        /* pill shape */
+  padding: 0.6rem 1.4rem;
+  cursor: pointer;
+}
+
+#greet-button:hover {
+  background-color: #6a9a56;   /* slightly darker on hover */
+}
+
+.greet-message {
+  min-height: 1.5rem;          /* keeps the layout from jumping */
+  font-weight: 600;
+  color: #4c6b3f;
+}
+
+/* --- Encyclopedia cards --- */
+/* The grid automatically fits as many cards per row as the screen allows. */
+.dog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.dog-card {
+  background-color: #ffffff;
+  border: 1px solid #e6e0d4;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.dog-card img {
+  width: 100%;
+  max-width: 15rem;      /* keeps the drawing a sensible size */
+  height: auto;
+}
+
+.dog-card h3 {
+  margin: 0.5rem 0 0.75rem;
+  font-size: 1.3rem;
+}
+
+/* Breed facts: bold green label, then the note underneath */
+.dog-card dl {
+  margin: 0;
+  text-align: left;
+}
+
+.dog-card dt {
+  font-weight: 700;
+  color: #4c6b3f;
+  margin-top: 0.6rem;
+}
+
+.dog-card dd {
+  margin: 0.15rem 0 0;
+}
+
+/* --- Fun fact button and hidden fact --- */
+.fact-button {
+  font: inherit;
+  margin-top: 1rem;
+  background-color: #ffffff;
+  color: #4c6b3f;
+  border: 2px solid #7fb069;
+  border-radius: 999px;
+  padding: 0.45rem 1.1rem;
+  cursor: pointer;
+}
+
+.fact-button:hover {
+  background-color: #eef5e9;
+}
+
+.fun-fact {
+  margin: 0.75rem 0 0;
+  padding: 0.75rem;
+  background-color: #eef5e9;
+  border-radius: 0.5rem;
+  text-align: left;
+}
+
+/* --- Footer --- */
+.site-footer {
+  text-align: center;
+  padding: 1.5rem 1rem 2rem;
+  color: #77716a;
+  font-size: 0.9rem;
+}
+
+/* --- Small screens (phones): stack everything into one column --- */
+@media (max-width: 30rem) {   /* 480px */
+  .site-header {
+    padding: 1.75rem 1rem;
+  }
+
+  .site-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .dog-grid {
+    grid-template-columns: 1fr;   /* one card per row */
+  }
+
+  .dog-card {
+    padding: 1rem;
+  }
+}

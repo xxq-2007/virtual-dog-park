@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Makes the page look right on phones as well as laptops -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtual Dog Park - A Friendly Dog Encyclopedia</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <h1>Virtual Dog Park</h1>
+    <p class="tagline">A friendly first stop for meeting three wonderful dog breeds.</p>
+  </header>
+
+  <main class="container">
+
+    <!-- Short welcome message -->
+    <section class="welcome" aria-labelledby="welcome-heading">
+      <h2 id="welcome-heading">Welcome to the park!</h2>
+      <p>
+        This is a tiny, leash-free corner of the internet where you can meet three
+        lovely dog breeds, learn what makes each one special, and pick up a few
+        everyday care tips. No yard required - just curiosity and a little scrolling.
+      </p>
+
+      <!-- Small interactive touch, powered by script.js -->
+      <div class="greet-box">
+        <button id="greet-button" type="button">Say hello to a dog</button>
+        <p id="greet-message" class="greet-message" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <!-- Dog Encyclopedia: three breed cards -->
+    <section class="encyclopedia" aria-labelledby="encyclopedia-heading">
+      <h2 id="encyclopedia-heading">Dog Encyclopedia</h2>
+      <p class="section-intro">
+        Meet our three residents. Each card shares the basics: size, personality,
+        and everyday care.
+      </p>
+
+      <div class="dog-grid">
+
+        <article class="dog-card">
+          <img src="assets/beagle.svg" alt="Illustration of a Beagle" width="300" height="300">
+          <h3>Beagle</h3>
+          <dl>
+            <dt>Size</dt>
+            <dd>Small to medium: about 33-40 cm tall and 9-14 kg. Compact, sturdy, and solid.</dd>
+            <dt>Personality</dt>
+            <dd>Merry, curious, and friendly. Beagles love company and follow their noses wherever they lead.</dd>
+            <dt>Everyday care</dt>
+            <dd>Daily walks with plenty of sniffing time, careful portion control because they love food, and regular ear cleaning.</dd>
+          </dl>
+          <button class="fact-button" type="button">Show a fun fact</button>
+          <p class="fun-fact" hidden>A Beagle's nose has roughly 220 million scent receptors - one of the best in the dog world!</p>
+        </article>
+
+        <article class="dog-card">
+          <img src="assets/golden-retriever.svg" alt="Illustration of a Golden Retriever" width="300" height="300">
+          <h3>Golden Retriever</h3>
+          <dl>
+            <dt>Size</dt>
+            <dd>Large: about 51-61 cm tall and 25-34 kg. Strong, athletic, and well built.</dd>
+            <dt>Personality</dt>
+            <dd>Gentle, intelligent, and eager to please. Famous for being wonderful with families and children.</dd>
+            <dt>Everyday care</dt>
+            <dd>Plenty of exercise such as walks, swimming, and fetch; brush the coat a few times a week; check the ears after swimming.</dd>
+          </dl>
+          <button class="fact-button" type="button">Show a fun fact</button>
+          <p class="fun-fact" hidden>Golden Retrievers were first bred in Scotland to fetch shot waterfowl for hunters - water is still their happy place.</p>
+        </article>
+
+        <article class="dog-card">
+          <img src="assets/poodle.svg" alt="Illustration of a Poodle" width="300" height="300">
+          <h3>Poodle</h3>
+          <dl>
+            <dt>Size</dt>
+            <dd>Comes in three sizes: Standard (over 38 cm), Miniature, and Toy - so there is a Poodle for almost any home.</dd>
+            <dt>Personality</dt>
+            <dd>Proud, active, and one of the smartest breeds around. Poodles love learning tricks and showing off.</dd>
+            <dt>Everyday care</dt>
+            <dd>Needs professional clipping every 4-6 weeks and regular brushing to prevent mats, plus daily exercise and puzzle games.</dd>
+          </dl>
+          <button class="fact-button" type="button">Show a fun fact</button>
+          <p class="fun-fact" hidden>The fancy Poodle haircut started as a practical hunting trim: pom-poms once protected joints in cold water.</p>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Built with plain HTML, CSS, and JavaScript. All dog artwork is hand-drawn SVG made for this page.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
