@@ -146,6 +146,137 @@ h2 {
   font-size: 0.9rem;
 }
 
+/* --- My Virtual Dog section --- */
+.my-dog {
+  margin-top: 2.5rem;
+}
+
+/* Shared box style for the form and the status panel */
+.adopt-form,
+.dog-status {
+  background-color: #ffffff;
+  border: 1px solid #e6e0d4;
+  border-radius: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  max-width: 30rem;
+}
+
+.form-row {
+  margin-bottom: 1rem;
+}
+
+/* Labels sit above their control, bold so they are easy to spot */
+.form-row label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.form-row select,
+.form-row input {
+  font: inherit;
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #c9c2b4;
+  border-radius: 0.5rem;
+  box-sizing: border-box;   /* keep padding inside the width */
+}
+
+#adopt-button {
+  font: inherit;
+  background-color: #7fb069;
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 0.6rem 1.4rem;
+  cursor: pointer;
+}
+
+#adopt-button:hover {
+  background-color: #6a9a56;
+}
+
+.form-error {
+  color: #b23a3a;          /* red text for problems */
+  font-weight: 600;
+  margin: 0.75rem 0 0;
+}
+
+/* Status panel */
+.dog-status {
+  margin-top: 1.5rem;
+}
+
+.dog-status h3 {
+  margin: 0 0 0.75rem;
+}
+
+.dog-status img {
+  display: block;
+  width: 100%;
+  max-width: 15rem;
+  height: auto;
+  margin: 0 auto 1rem;
+}
+
+.status-list {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+}
+
+.status-list li {
+  padding: 0.3rem 0;
+  border-bottom: 1px solid #f0ebe0;
+}
+
+.status-list li:last-child {
+  border-bottom: none;
+}
+
+/* Happiness bar: light gray track with a green fill */
+.happiness-bar {
+  background-color: #efe9dd;
+  border-radius: 999px;
+  height: 0.9rem;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.happiness-fill {
+  background-color: #7fb069;
+  height: 100%;
+  width: 50%;               /* starting value; JS updates it */
+  transition: width 0.3s ease;
+}
+
+.care-buttons {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.care-buttons button {
+  font: inherit;
+  background-color: #ffffff;
+  color: #4c6b3f;
+  border: 2px solid #7fb069;
+  border-radius: 999px;
+  padding: 0.45rem 1.1rem;
+  cursor: pointer;
+}
+
+.care-buttons button:hover {
+  background-color: #eef5e9;
+}
+
+.care-message {
+  min-height: 1.5rem;
+  margin: 0.75rem 0 0;
+  font-weight: 600;
+  color: #4c6b3f;
+}
+
 /* --- Small screens (phones): stack everything into one column --- */
 @media (max-width: 30rem) {   /* 480px */
   .site-header {

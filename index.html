@@ -90,6 +90,49 @@
       </div>
     </section>
 
+    <!-- My Virtual Dog: adopt and care for a virtual pet -->
+    <section class="my-dog" aria-labelledby="my-dog-heading">
+      <h2 id="my-dog-heading">My Virtual Dog</h2>
+      <p class="section-intro">Pick a breed, give your new friend a name, and take good care of them.</p>
+
+      <!-- Adoption form -->
+      <form id="adopt-form" class="adopt-form" novalidate>
+        <div class="form-row">
+          <label for="breed-choice">Choose a breed:</label>
+          <select id="breed-choice" name="breed">
+            <option value="Beagle">Beagle</option>
+            <option value="Golden Retriever">Golden Retriever</option>
+            <option value="Poodle">Poodle</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="dog-name">Dog's name:</label>
+          <input type="text" id="dog-name" name="dog-name" maxlength="20" placeholder="Up to 20 characters">
+        </div>
+        <button id="adopt-button" type="submit">Adopt</button>
+        <p id="name-error" class="form-error" role="alert" hidden></p>
+      </form>
+
+      <!-- Dog status panel (hidden until a dog is adopted) -->
+      <div id="dog-status" class="dog-status" hidden>
+        <h3>Your dog</h3>
+        <img id="dog-image" src="assets/beagle.svg" alt="Illustration of a Beagle" width="300" height="300">
+        <ul class="status-list">
+          <li>Name: <span id="status-name"></span></li>
+          <li>Breed: <span id="status-breed"></span></li>
+          <li>Day: <span id="status-day"></span></li>
+          <li>Growth stage: <span id="status-stage"></span></li>
+          <li>Happiness: <span id="status-happiness"></span> / 100</li>
+        </ul>
+        <div class="happiness-bar"><div id="happiness-fill" class="happiness-fill"></div></div>
+        <div class="care-buttons">
+          <button id="feed-button" type="button">Feed</button>
+          <button id="play-button" type="button">Play</button>
+        </div>
+        <p id="care-message" class="care-message" aria-live="polite"></p>
+      </div>
+    </section>
+
   </main>
 
   <footer class="site-footer">
